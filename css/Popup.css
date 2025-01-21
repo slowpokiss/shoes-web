@@ -1,0 +1,35 @@
+.popup {
+  position: fixed;
+  width: 100%;
+  right: 0;
+  top: 20px;
+  z-index: 15;
+}
+
+.close {
+  display: none;
+}
+
+.popup__text {
+  padding: 0 15px;
+}
+
+.popup__body {
+  background-color: #d0d0d0;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 50px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.popup__btn {
+  width: fit-content;
+  height: auto;
+  cursor: pointer;
+  font-size: 18px;
+  position: relative;
+}

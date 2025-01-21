@@ -1,0 +1,7 @@
+.contacts-container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin: 0;
+  padding: 0  2em 2em 2em;
+}

@@ -1,0 +1,102 @@
+@keyframes slideInRight {
+  from {
+      display: none;
+      right: -300px;
+  }
+  to {
+      display: block;
+      right: 57px;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+      display: block;
+      right: 57px;
+  }
+  to {
+      display: none;
+      right: -300px;
+  }
+}
+
+.header-controls-search-form {
+  position: absolute;
+  top: 14px;
+  right: -300px;
+  width: 233px;
+  height: 38px;
+  padding: 0 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px #D4E4E6;
+  border-radius: 50px;
+  text-align: right;
+  animation: slideInRight 0.5s forwards;
+}
+
+.invisible {
+  display: none;
+  right: 57px;
+  animation: slideOutRight 0.5s forwards;
+} 
+
+.input-group-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+}
+
+.btn-lg {
+  background: url('../../shoes-app/img/search.png') no-repeat center;
+  background-size: 22px;
+  width: 100%;
+  height: 60px;
+  border: none;
+  padding: 0;
+}
+
+.header-controls-search-form .form-control {
+  width: 100%;
+  height: 100%;
+  color: #333333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.mobile-form {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  height: 50px;
+  padding: 0 0 0 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px #D4E4E6;
+  border-radius: 50px;
+}
+
+.mobile-form-input {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  color: #333333;
+  border: none;
+  outline: none;
+}
+
+.search-field {
+  width: 70%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 530px) { 
+  .search-field {
+    width: 90%;
+  }
+}

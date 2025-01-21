@@ -1,0 +1,44 @@
+/* Catalog */
+.catalog {
+  min-height: 600px;
+}
+
+.catalog-categories {
+  font-size: 1.3rem;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.catalog-item-card {
+  margin-bottom: 1em;
+}
+
+.catalog-item-size {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.catalog-item-size.selected {
+  background: #727e86;
+  border-radius: 15px;
+  color: #fff;
+}
+
+.search-field {
+  width: 80%;
+  max-width: 630px;
+  margin: 0 auto 40px auto;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #000000; 
+}
+
