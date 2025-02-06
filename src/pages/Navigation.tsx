@@ -1,10 +1,11 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SearchForm from "../components/SearchForm";
 import { setSearchState } from "../redux-toolkit/mainSlice";
 import { Dropdown, Typography, Space, ConfigProvider } from "antd";
 import DrawerComponent from "../components/DrawerComponent";
 import { mainLinks } from "../loaders/categoryLoader";
+import { initialCartSliceInterface } from "../redux-toolkit/cartSlice";
 
 const scrollTop = () =>
   window.scrollTo({
@@ -14,15 +15,18 @@ const scrollTop = () =>
 
 export default function Navigation() {
   const dispatch = useDispatch();
-  const localCartCount = Number(localStorage.getItem("cartCount")) ?? 0;
+  const cartCount = useSelector(
+    (state: { cartSlice: initialCartSliceInterface }) =>
+      state.cartSlice.cartCount
+  );
 
   return (
     <>
       <header className="container">
         <nav className="navbar">
           <div className="logo">
-            <Link to="/shoes-app" className="navbar-brand">
-              <img src="../../shoes-app/img/header-logo.png" alt="Bosa Noga" />
+            <Link to="/shoes-app/" className="navbar-brand">
+              <img src="/shoes-app/img/header-logo.png" alt="Bosa Noga" />
             </Link>
           </div>
 
@@ -87,19 +91,12 @@ export default function Navigation() {
 
             <div>
               <div className="header-controls-pics">
-                {/* <div
-                  data-id="search-expander"
-                  className="header-controls-pic header-controls-search"
-                  onClick={() => {
-                    dispatch(setSearchState());
-                  }}
-                ></div> */}
                 <img
                   onClick={() => {
                     dispatch(setSearchState());
                   }}
                   className="header-controls-pic header-controls-search"
-                  src="../../shoes-app/img/search.png"
+                  src="/shoes-app/img/search.png"
                   alt="search"
                 />
                 <Link
@@ -108,13 +105,17 @@ export default function Navigation() {
                 >
                   <div
                     className={`header-controls-cart-full ${
-                      localCartCount >= 0 ? "" : "btn-hide"
+                      cartCount >= 0 ? "" : "btn-hide"
                     }`}
                   >
-                    {localCartCount ? localCartCount : 0}
+                    {cartCount ? cartCount : 0}
                   </div>
-                  
-                  <img className="header-controls-pic header-controls-cart" src="../../shoes-app/img/shopping-cart.png" alt="cart" />
+
+                  <img
+                    className="header-controls-pic header-controls-cart"
+                    src="/shoes-app/img/shopping-cart.png"
+                    alt="cart"
+                  />
 
                   <div className="header-controls-cart-menu "></div>
                 </Link>
@@ -123,6 +124,14 @@ export default function Navigation() {
             </div>
           </div>
         </nav>
+        <div className="banner">
+          <img
+            src="/shoes-app/img/banner.jpg"
+            className="img-fluid"
+            alt="К весне готовы!"
+          />
+          <h2 className="banner-header">К весне готовы!</h2>
+        </div>
       </header>
 
       <Outlet />
@@ -134,21 +143,21 @@ export default function Navigation() {
               <p className="footer-item-title">Информация</p>
               <ul className="nav">
                 <Link
-                  to="/shoes-app/about"
+                  to="shoes-app/about"
                   onClick={scrollTop}
                   className="nav-item"
                 >
                   О магазине
                 </Link>
                 <Link
-                  to="/shoes-app/catalog"
+                  to="shoes-app/catalog"
                   onClick={scrollTop}
                   className="nav-item"
                 >
                   Каталог
                 </Link>
                 <Link
-                  to="/shoes-app/contacts"
+                  to="shoes-app/contacts"
                   onClick={scrollTop}
                   className="nav-item"
                 >
@@ -162,22 +171,22 @@ export default function Navigation() {
               <p className="footer-item-title">Принимаем к оплате:</p>
               <div className="footer-pay">
                 <img
-                  src="../../shoes-app/img/paypal.png"
+                  src="/shoes-app/img/paypal.png"
                   alt="paypal"
                   className="footer-pay-system"
                 />
                 <img
-                  src="../../shoes-app/img/visa.png"
+                  src="/shoes-app/img/visa.png"
                   alt="visa"
                   className="footer-pay-system"
                 />
                 <img
-                  src="../../shoes-app/img/card.png"
+                  src="/shoes-app/img/card.png"
                   alt="paypal"
                   className="footer-pay-system"
                 />
                 <img
-                  src="../../shoes-app/img/yamoney.png"
+                  src="/shoes-app/img/yamoney.png"
                   alt="yamoney"
                   className="footer-pay-system"
                 />
@@ -210,17 +219,17 @@ export default function Navigation() {
               <div className="footer-social-links">
                 <img
                   className="footer-social-link"
-                  src="../../shoes-app/img/vk-social-network-logo.png"
+                  src="/shoes-app/img/vk-social-network-logo.png"
                   alt="vk"
                 />
                 <img
                   className="footer-social-link"
-                  src="../../shoes-app/img/whatsapp.png"
+                  src="/shoes-app/img/whatsapp.png"
                   alt="whatsapp"
                 />
                 <img
                   className="footer-social-link"
-                  src="../../shoes-app/img/telegram.png"
+                  src="/shoes-app/img/telegram.png"
                   alt="telegram"
                 />
               </div>

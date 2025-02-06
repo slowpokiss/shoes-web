@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import { ConfigProvider, Dropdown} from "antd";
 import type { MenuProps } from "antd";
 import { MenuOutlined } from '@ant-design/icons';
-import '../../css/Catalog.css'
+
 
 export const mainLinks: MenuProps["items"] = [
   { 

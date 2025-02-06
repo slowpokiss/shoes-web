@@ -205,11 +205,13 @@ const OneCardConstructor = () => {
                 value={"В корзину"}
               />
             </form>
-          </div>
 
-          <div className="single-card-info-mobile">
+            <div className="single-card-info-mobile">
             <Collapse accordion items={items} />
           </div>
+          </div>
+
+          
         </div>
       </div>
     </>
@@ -225,14 +227,6 @@ export default function SingleCard() {
       <main className="container">
         <div className="row">
           <div className="col">
-            <div className="banner">
-              <img
-                src="../../shoes-app/img/banner.jpg"
-                className="img-fluid"
-                alt="К весне готовы!"
-              />
-              <h2 className="banner-header">К весне готовы!</h2>
-            </div>
             <section className="catalog">
               <Suspense fallback={<Loader />}>
                 <Await resolve={oneCard}>

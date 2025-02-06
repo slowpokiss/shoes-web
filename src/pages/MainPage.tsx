@@ -1,4 +1,3 @@
-import "../../css/MainPage.css";
 import { useLoaderData, Await, useAsyncValue } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Suspense } from "react";
@@ -97,14 +96,6 @@ export default function MainPage() {
   return (
     <>
       <main className="container">
-        <div className="banner">
-          <img
-            src="../shoes-app/img/banner.jpg"
-            className="img-fluid"
-            alt="К весне готовы!"
-          />
-          <h2 className="banner-header">К весне готовы!</h2>
-        </div>
         <section className="top-sales">
           <h2 className="text-center">Хиты продаж!</h2>
           <Suspense fallback={<Loader />}>

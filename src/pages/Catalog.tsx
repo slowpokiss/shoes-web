@@ -10,7 +10,6 @@ import {
 import LoadMore from "../components/LoadMore";
 import { loaderDataInterface } from "../interface/interface";
 import "../../css/MainPage.css";
-import '../../css/Catalog.css';
 import SearchForm from "../components/SearchForm";
 
 export default function Catalog() {
@@ -32,14 +31,14 @@ export default function Catalog() {
       <main className="container">
         <div className="row">
           <div className="col">
-            <div className="banner">
+            {/* <div className="banner">
               <img
                 src="../shoes-app/img/banner.jpg"
                 className="img-fluid"
                 alt="К весне готовы!"
               />
               <h2 className="banner-header">К весне готовы!</h2>
-            </div>
+            </div> */}
             <section className="catalog">
               <h2 className="text-center">Каталог</h2>
               <div className="search-field">

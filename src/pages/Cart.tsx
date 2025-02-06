@@ -15,7 +15,6 @@ interface cartItem {
   id: number;
 }
 
-
 export default function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((state: {cartSlice: initialCartSliceInterface}) => state.cartSlice.cart);
@@ -23,7 +22,7 @@ export default function Cart() {
 
  //let totalCount = useSelector((state: {cartSlice: initialCartSliceInterface}) => state.cartSlice.totalPrice);
   //const formattedTotalCount = String(totalCount).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
-  
+
   function ActualCart({ cart, dispatch }: { cart: cartItem[]; dispatch: any }) {
     const data = cart.map((el: cartItem, ind: number) => ({
       key: el.id,
@@ -36,11 +35,9 @@ export default function Cart() {
       totalPrice: Number(el.price) * el.count,
     }));
   
-    // Расчет общей стоимости
     const overallTotal = data.reduce((acc, item) => acc + item.totalPrice, 0);
     const formattedTotal = String(overallTotal).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
   
-    // Определение колонок
     const columns = [
       {
         title: "#",
@@ -109,14 +106,6 @@ export default function Cart() {
     <main className="container">
       <div className="row">
         <div className="col">
-          <div className="banner">
-            <img
-              src="../shoes-app/img/banner.jpg"
-              className="img-fluid"
-              alt="К весне готовы!"
-            />
-            <h2 className="banner-header">К весне готовы!</h2>
-          </div>
           <div className="cart">
           <section>
             <h2 className="text-center">Корзина</h2>
@@ -129,7 +118,6 @@ export default function Cart() {
             </div>
           </section>
           </div>
-          
         </div>
       </div>
     </main>

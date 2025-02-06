@@ -5,15 +5,7 @@ export default function About() {
     <>
       <main className="container">
         <div>
-          <div className="banner">
-            <img
-              src="../shoes-app/img/banner.jpg"
-              className="img-fluid"
-              alt="К весне готовы!"
-            />
-            <h2 className="banner-header">К весне готовы!</h2>
-          </div>
-          <section className="">
+          <section>
             <div className="about-container">
               <h2 className="text-center">О магазине</h2>
               <p>
