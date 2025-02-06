@@ -1,14 +1,17 @@
 import { Await, useLoaderData, useAsyncValue } from "react-router-dom";
 import { FormEvent, Suspense } from "react";
 import Loader from "../components/Loader";
-import { singleCardInterface, loaderDataInterface } from "../interface/interface";
+import {
+  singleCardInterface,
+  loaderDataInterface,
+} from "../interface/interface";
 import "../../css/SingleCard.css";
 import { useState } from "react";
 import { addToCart } from "../redux-toolkit/cartSlice";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
-import type { CollapseProps } from 'antd';
-import { Collapse, Table } from 'antd';
+import type { CollapseProps } from "antd";
+import { Collapse, Table } from "antd";
 
 interface DataType {
   key: string;
@@ -18,14 +21,25 @@ interface DataType {
 
 async function getSingleCard(id: number) {
   try {
-    const response = await fetch(`https://shoes-app-back.onrender.com/api/items/${id}`);
+    const response = await fetch(
+      `https://shoes-back-mber.onrender.com/api/products/${id}`
+    );
+
+    if (!response.ok) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Не удалось загрузить карточку товара",
+      });
+      return;
+    }
+
     return response.json();
   } catch (error) {
     Swal.fire({
       icon: "error",
       title: "Oops...",
       text: "Не удалось загрузить карточку товара",
-      footer: "Попробуйте перезагрузить страницу",
     });
     throw new Error(`Ошибка ${error}`);
   }
@@ -44,6 +58,7 @@ const OneCardConstructor = () => {
   const filteredSizes = oneCard.sizes
     .filter((item) => item.available)
     .map((size) => size.size);
+
   const [size, setSize] = useState("");
   const [count, setCount] = useState(1);
 
@@ -55,57 +70,63 @@ const OneCardConstructor = () => {
     dispatch(addToCart({ name, price, count, size, id }));
   };
 
-
   const columns = [
     {
-      
-      dataIndex: 'property',
-      key: 'property',
+      dataIndex: "property",
+      key: "property",
     },
     {
-      dataIndex: 'value',
-      key: 'value',
+      dataIndex: "value",
+      key: "value",
     },
   ];
 
   const data: DataType[] = [
     {
-      key: '1',
-      property: 'Артикул',
+      key: "1",
+      property: "Артикул",
       value: oneCard.sku,
     },
     {
-      key: '2',
-      property: 'Производитель',
+      key: "2",
+      property: "Производитель",
       value: oneCard.manufacturer,
     },
     {
-      key: '3',
-      property: 'Цвет',
+      key: "3",
+      property: "Цвет",
       value: oneCard.color,
     },
     {
-      key: '4',
-      property: 'Материалы',
+      key: "4",
+      property: "Материалы",
       value: oneCard.material,
     },
     {
-      key: '5',
-      property: 'Сезон',
+      key: "5",
+      property: "Сезон",
       value: oneCard.season,
     },
     {
-      key: '6',
-      property: 'Повод',
+      key: "6",
+      property: "Повод",
       value: oneCard.reason,
     },
   ];
 
-  const items: CollapseProps['items'] = [
+  const items: CollapseProps["items"] = [
     {
-      key: '1',
-      label: 'Описание',
-      children: <Table className="table" columns={columns} showHeader={false} dataSource={data} pagination={false} />,
+      key: "1",
+      label: "Описание",
+      children: (
+        <Table
+          className="table"
+          columns={columns}
+          showHeader={false}
+          dataSource={data}
+          pagination={false}
+        />
+      ),
     },
   ];
 
@@ -124,7 +145,12 @@ const OneCardConstructor = () => {
 
           <div className="single-card-info">
             <div className="single-card-info-wrapper">
-              <Table  columns={columns} showHeader={false} dataSource={data} pagination={false} />
+              <Table
+                columns={columns}
+                showHeader={false}
+                dataSource={data}
+                pagination={false}
+              />
             </div>
 
             <form
@@ -190,12 +216,9 @@ const OneCardConstructor = () => {
   );
 };
 
-
-
 export default function SingleCard() {
   const loaderData = useLoaderData();
-  const { oneCard } = loaderData as loaderDataInterface
-  
+  const { oneCard } = loaderData as loaderDataInterface;
 
   return (
     <>

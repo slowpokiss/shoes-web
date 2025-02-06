@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import { cardInterface } from "../interface/interface";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+
 import {
   setOffset,
   updateCurrOffset,
@@ -33,23 +35,37 @@ export default function LoadMore({ currCategory }: props) {
   const loadMore = async () => {
     setLoadState(true);
     try {
-      let path = `https://shoes-app-back.onrender.com/api/items?offset=${currCategory.offset}`;
+      let path = `https://shoes-back-mber.onrender.com/api/products?offset=${currCategory.offset}`;
       if (currCategory.id !== 10) {
-        path = `https://shoes-app-back.onrender.com/api/items?categoryId=${currCategory.id}&offset=${currCategory.offset}`;
+        path = `https://shoes-back-mber.onrender.com/api/products?categoryId=${currCategory.id}&offset=${currCategory.offset}`;
       }
       if (typeof currCategory.id === "string") {
-        path = `https://shoes-app-back.onrender.com/api/items?q=${currCategory.id}&offset=${currCategory.offset}`;
+        path = `https://shoes-back-mber.onrender.com/api/products?q=${currCategory.id}&offset=${currCategory.offset}`;
       }
 
       const response = await fetch(path);
+      if (!response.ok) {
+        Swal.fire({
+          icon: "error",
+          title: "Ошибка!",
+          text: "Не удалось загрузить больше товаров",
+        });
+        setLoadState(false);
+        return;
+      }
+
       const newItems = await response.json();
+
       const offset = newItems.length;
+
 
       if (newItems.length < 6) {
         setLoadState(false);
         dispatch(updateCurrOffset({ offset }));
         return;
       }
+
+      
 
       const settingOffset = newItems.length + currCategory.offset;
       dispatch(setOffset({ settingOffset }));

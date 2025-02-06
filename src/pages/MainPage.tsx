@@ -18,16 +18,24 @@ import { Carousel } from "antd";
 async function getTopSales() {
   try {
     const response = await fetch(
-      "https://shoes-app-back.onrender.com/api/top-sales"
+      "https://shoes-back-mber.onrender.com/api/top-sales"
     );
+    if (!response.ok) {
+      Swal.fire({
+        icon: "error",
+        title: "Ошибка!",
+        text: "Не удалось загрузить хиты продаж",
+      });
+      return null
+    }
     return response.json();
   } catch (error) {
     Swal.fire({
       icon: "error",
-      title: "Oops...",
+      title: "Ошибка!",
       text: "Не удалось загрузить хиты продаж",
     });
-    console.log("error");
+    return null
   }
 }
 
@@ -43,7 +51,8 @@ const SalesConstructor = () => {
   return (
     <>
       <div className="top-sales-cards">
-        <Carousel arrows autoplay  autoplaySpeed={6000} infinite={true}  >
+        {
+          topSales !== null ? <Carousel arrows autoplay  autoplaySpeed={6000} infinite={true}  >
           {topSales.map((el: cardInterface, ind: number) => {
             return (
               <div className="top-sales-card-container" key={ind}>
@@ -61,7 +70,8 @@ const SalesConstructor = () => {
               </div>
             );
           })}
-        </Carousel>
+        </Carousel> : <></>
+        }
       </div>
     </>
   );
@@ -81,6 +91,8 @@ export default function MainPage() {
   const currCategory = useSelector(
     (state: { main: initialMainSliceInterface }) => state.main.currCategory
   );
+
+  
 
   return (
     <>

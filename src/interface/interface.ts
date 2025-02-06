@@ -70,3 +70,21 @@ export interface loaderDataInterface {
   oneCard?: oneCardInterface;
   sales?: category
 }
+interface cartItemInterface {
+  id: number;
+  name: string;
+  size: number;
+  count: number;
+  price: number;
+}
+
+interface ownerDataInterface {
+  phone: string;
+  address: string;
+}
+
+export interface orderDataInterface {
+  owner: ownerDataInterface;
+  items: cartItemInterface[];
+  totalPrice: number;
+}

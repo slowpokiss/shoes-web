@@ -12,17 +12,26 @@ interface pathInterface {
 }
 
 export async function getItems(id: number | string) {
-  let path = `https://shoes-app-back.onrender.com/api/items`;
+  let path = `https://shoes-back-mber.onrender.com/api/products`;
   if (id !== 10) {
-    path = `https://shoes-app-back.onrender.com/api/items?categoryId=${id}`;
+    path = `https://shoes-back-mber.onrender.com/api/products?categoryId=${id}`;
   }
   if (typeof id === "string") {
-    path = `https://shoes-app-back.onrender.com/api/items?q=${id}`;
+    path = `https://shoes-back-mber.onrender.com/api/products?q=${id}`;
   }
   try {
     const data = await fetch(path);
-    const response = await data.json();
-    return response;
+    const response = await data;
+
+    if (!response.ok) {
+      Swal.fire({
+        icon: "error",
+        title: "Ошибка!",
+        text: "Не удалось загрузить товары",
+      });
+      return null
+    }
+    return response.json();
   } catch (error) {
     Swal.fire({
       icon: "error",
@@ -49,10 +58,11 @@ export const ItemsConstructor = ({ path }: pathInterface) => {
     fetchData();
   }, [path.id]);
 
+
   return (
     <>
       <div className="catalog-items">
-        {items.map((el: cardInterface) => {
+        {items !== null ? items.map((el: cardInterface) => {
           return (
             <Card
               key={el.id}
@@ -62,7 +72,7 @@ export const ItemsConstructor = ({ path }: pathInterface) => {
               price={el.price}
             />
           );
-        })}
+        }): <></> }
       </div>
     </>
   );

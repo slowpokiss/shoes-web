@@ -41,8 +41,16 @@ export const categoryItemsLinks: MenuProps["items"] = [
 export async function getCategoryItems() {
   try {
     const response = await fetch(
-      "https://shoes-app-back.onrender.com/api/categories"
+      "https://shoes-back-mber.onrender.com/api/categories"
     );
+    if (!response.ok) {
+      Swal.fire({
+        icon: "error",
+        title: "Ошибка!",
+        text: "Не удалось категории товаров",
+      });
+      return []
+    }
     return response.json();
   } catch (error) {
     Swal.fire({

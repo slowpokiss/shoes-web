@@ -5,13 +5,13 @@ export default function ErrorPage() {
       <div className="row">
         <div className="col">
           <div className="banner">
-            <img src="../img/banner.jpg" className="img-fluid" alt="К весне готовы!" />
+            <img src="./img/banner.jpg" className="img-fluid" alt="К весне готовы!" />
             <h2 className="banner-header">К весне готовы!</h2>
           </div>
           <section className="top-sales">
-            <h2 className="text-center">Извините, произошла ошибка</h2>
+            <h2 className="text-center">Ошибка</h2>
             <p>
-              Что-то пошло не так
+              Извините, произошла ошибка!
             </p>
           </section>
         </div>
