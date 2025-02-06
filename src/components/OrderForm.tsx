@@ -4,12 +4,12 @@ import Loader from "./Loader";
 import {
   clearCart
 } from "../redux-toolkit/cartSlice";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Swal from "sweetalert2";
 import {
   orderDataInterface
 } from "../interface/interface";
-import { Alert } from 'antd';
+// import { Alert } from 'antd';
 
 interface orderFormProps {
   submitting: boolean;
@@ -18,7 +18,7 @@ interface orderFormProps {
 export default function OrderForm({ submitting }: orderFormProps) {
   const act = useActionData();
   const dispatch = useDispatch();
-  const [alertState, setAlertState] = useState(false);
+  // const [alertState, setAlertState] = useState(false);
   
   const phoneRef = useRef<HTMLInputElement>(null);
   const addressRef = useRef<HTMLInputElement>(null);
@@ -28,7 +28,7 @@ export default function OrderForm({ submitting }: orderFormProps) {
     if (act) {
       dispatch(clearCart());
       console.log(act)
-      setAlertState(true)
+      // setAlertState(true)
     }
 
     phoneRef.current!.value = "";

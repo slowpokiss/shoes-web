@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { initialMainSliceInterface, setCategory } from "../redux-toolkit/mainSlice";
 import "./../../css/SearchForm.css";

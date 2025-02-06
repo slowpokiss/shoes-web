@@ -11,7 +11,7 @@ interface cartItem {
   name: string;
   size: number;
   count: number;
-  price: string;
+  price: number;
   id: number;
 }
 
