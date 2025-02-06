@@ -14,12 +14,6 @@ input {
   margin: 0 auto;
 }
 
-/* .scard-control-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-} */
-
 .single-card-main {
   display: flex;
   padding: 20px;

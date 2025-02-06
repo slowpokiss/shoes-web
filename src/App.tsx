@@ -16,7 +16,7 @@ import Cart from "./pages/Cart";
 import { postLoader } from "./pages/MainPage";
 import { oneCardLoader } from "./pages/SingleCard";
 import { getFormData } from "./components/OrderForm";
-
+import "../css/MainPage.css";
 
 const routerProv = createBrowserRouter(
   createRoutesFromElements(
