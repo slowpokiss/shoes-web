@@ -49,8 +49,8 @@ export default function Cart() {
         dataIndex: "name",
         key: "name",
         render: (text: string, record: cartItem) => (
-          <Link to={`/shoes-app/catalog/${record.id}`}>{text}</Link>
-        ),
+          <Link to={`/catalog/${record.id}`}>{text}</Link>
+        ),  
       },
       {
         title: "Размер",

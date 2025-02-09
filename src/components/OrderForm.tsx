@@ -40,7 +40,7 @@ export default function OrderForm({ submitting }: orderFormProps) {
     <>
       {submitting ? <Loader /> : null}
       {/* <Alert className={`${alertState ? 'block': 'none'}`} closable message="Заказ успешно сделан!" type="success" showIcon /> */}
-      <Form action="/shoes-app/cart" method="POST" className="order-form">
+      <Form action="/cart" method="POST" className="order-form">
         <div className="form-group">
           <label htmlFor="phone">Телефон</label>
           <input

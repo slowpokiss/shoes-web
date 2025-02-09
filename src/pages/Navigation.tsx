@@ -25,30 +25,30 @@ export default function Navigation() {
       <header className="container">
         <nav className="navbar">
           <div className="logo">
-            <Link to="/shoes-app/" className="navbar-brand">
-              <img src="/shoes-app/img/header-logo.png" alt="Bosa Noga" />
+            <Link to="/" className="navbar-brand">
+              <img src="/img/header-logo.png" alt="Bosa Noga" />
             </Link>
           </div>
 
           <div className="collapse navbar-collapse" id="navbarMain">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/shoes-app/" end>
+                <NavLink className="nav-link" to="/" end>
                   Главная
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/shoes-app/catalog">
+                <NavLink className="nav-link" to="/catalog">
                   Каталог
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/shoes-app/about">
+                <NavLink className="nav-link" to="/about">
                   О магазине
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/shoes-app/contacts">
+                <NavLink className="nav-link" to="/contacts">
                   Контакты
                 </NavLink>
               </li>
@@ -96,11 +96,11 @@ export default function Navigation() {
                     dispatch(setSearchState());
                   }}
                   className="header-controls-pic header-controls-search"
-                  src="/shoes-app/img/search.png"
+                  src="/img/search.png"
                   alt="search"
                 />
                 <Link
-                  to={"/shoes-app/cart"}
+                  to={"/cart"}
                   className="header-controls-pic header-controls-cart"
                 >
                   <div
@@ -113,7 +113,7 @@ export default function Navigation() {
 
                   <img
                     className="header-controls-pic header-controls-cart"
-                    src="/shoes-app/img/shopping-cart.png"
+                    src="/img/shopping-cart.png"
                     alt="cart"
                   />
 
@@ -126,7 +126,7 @@ export default function Navigation() {
         </nav>
         <div className="banner">
           <img
-            src="/shoes-app/img/banner.jpg"
+            src="/img/banner.jpg"
             className="img-fluid"
             alt="К весне готовы!"
           />
@@ -143,21 +143,21 @@ export default function Navigation() {
               <p className="footer-item-title">Информация</p>
               <ul className="nav">
                 <Link
-                  to="shoes-app/about"
+                  to="about"
                   onClick={scrollTop}
                   className="nav-item"
                 >
                   О магазине
                 </Link>
                 <Link
-                  to="shoes-app/catalog"
+                  to="catalog"
                   onClick={scrollTop}
                   className="nav-item"
                 >
                   Каталог
                 </Link>
                 <Link
-                  to="shoes-app/contacts"
+                  to="contacts"
                   onClick={scrollTop}
                   className="nav-item"
                 >
@@ -171,22 +171,22 @@ export default function Navigation() {
               <p className="footer-item-title">Принимаем к оплате:</p>
               <div className="footer-pay">
                 <img
-                  src="/shoes-app/img/paypal.png"
+                  src="/img/paypal.png"
                   alt="paypal"
                   className="footer-pay-system"
                 />
                 <img
-                  src="/shoes-app/img/visa.png"
+                  src="/img/visa.png"
                   alt="visa"
                   className="footer-pay-system"
                 />
                 <img
-                  src="/shoes-app/img/card.png"
+                  src="/img/card.png"
                   alt="paypal"
                   className="footer-pay-system"
                 />
                 <img
-                  src="/shoes-app/img/yamoney.png"
+                  src="/img/yamoney.png"
                   alt="yamoney"
                   className="footer-pay-system"
                 />
@@ -219,17 +219,17 @@ export default function Navigation() {
               <div className="footer-social-links">
                 <img
                   className="footer-social-link"
-                  src="/shoes-app/img/vk-social-network-logo.png"
+                  src="/img/vk-social-network-logo.png"
                   alt="vk"
                 />
                 <img
                   className="footer-social-link"
-                  src="/shoes-app/img/whatsapp.png"
+                  src="/img/whatsapp.png"
                   alt="whatsapp"
                 />
                 <img
                   className="footer-social-link"
-                  src="/shoes-app/img/telegram.png"
+                  src="/img/telegram.png"
                   alt="telegram"
                 />
               </div>

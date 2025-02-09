@@ -12,7 +12,7 @@ export default function Card({ price, images, title, id, type }: props) {
 
   return (
     <Link
-      to={`/shoes-app/catalog/${id}`}
+      to={`/catalog/${id}`}
       className={`${type === "sale-card" ? "top-sales-card" : "card"} `}
     >
       <img src={images[0]} className="card-image" alt={title} />

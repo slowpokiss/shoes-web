@@ -21,25 +21,25 @@ import "../css/MainPage.css";
 const routerProv = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/shoes-app" element={<Navigation />}>
-        <Route path="/shoes-app" loader={postLoader} element={<MainPage />}></Route>
+      <Route path="/" element={<Navigation />}>
+        <Route path="/" loader={postLoader} element={<MainPage />}></Route>
         <Route
-          path="/shoes-app/catalog"
+          path="/catalog"
           loader={postLoader}
           element={<Catalog />}
         ></Route>
         <Route
-          path="/shoes-app/catalog/:id"
+          path="/catalog/:id"
           loader={oneCardLoader}
           element={<SingleCard />}
           errorElement={<ErrorPage />}
         ></Route>
         <Route path="*" element={<Error404Page />}></Route>
-        <Route path="/shoes-app/error" element={<ErrorPage />}></Route>
-        <Route path="/shoes-app/about" element={<About />}></Route>
-        <Route path="/shoes-app/contacts" element={<Contacts />}></Route>
+        <Route path="/error" element={<ErrorPage />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/contacts" element={<Contacts />}></Route>
         <Route
-          path="/shoes-app/cart"
+          path="/cart"
           action={getFormData}
           element={<Cart />}
           errorElement={<ErrorPage />}
