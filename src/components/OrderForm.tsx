@@ -1,15 +1,11 @@
 import { Form, useActionData, LoaderFunctionArgs } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Loader from "./Loader";
-import {
-  clearCart
-} from "../redux-toolkit/cartSlice";
-import { useEffect, useRef } from "react";
+import { clearCart } from "../redux-toolkit/cartSlice";
+import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
-import {
-  orderDataInterface
-} from "../interface/interface";
-// import { Alert } from 'antd';
+import { orderDataInterface } from "../interface/interface";
+import { Alert } from "antd";
 
 interface orderFormProps {
   submitting: boolean;
@@ -18,8 +14,8 @@ interface orderFormProps {
 export default function OrderForm({ submitting }: orderFormProps) {
   const act = useActionData();
   const dispatch = useDispatch();
-  // const [alertState, setAlertState] = useState(false);
-  
+  const [alertState, setAlertState] = useState(false);
+
   const phoneRef = useRef<HTMLInputElement>(null);
   const addressRef = useRef<HTMLInputElement>(null);
   const agreementRef = useRef<HTMLInputElement>(null);
@@ -27,8 +23,13 @@ export default function OrderForm({ submitting }: orderFormProps) {
   useEffect(() => {
     if (act) {
       dispatch(clearCart());
-      console.log(act)
-      // setAlertState(true)
+      setAlertState(true);
+
+      const timer = setTimeout(() => {
+        setAlertState(false);
+      }, 8000);
+
+      return () => clearTimeout(timer);
     }
 
     phoneRef.current!.value = "";
@@ -39,7 +40,14 @@ export default function OrderForm({ submitting }: orderFormProps) {
   return (
     <>
       {submitting ? <Loader /> : null}
-      {/* <Alert className={`${alertState ? 'block': 'none'}`} closable message="Заказ успешно сделан!" type="success" showIcon /> */}
+      <Alert
+        style={{ display: alertState ? "flex" : "none" }}
+        className={`order-alert`}
+        closable
+        message="Заказ успешно сделан!"
+        type="success"
+        showIcon
+      />
       <Form action="/cart" method="POST" className="order-form">
         <div className="form-group">
           <label htmlFor="phone">Телефон</label>
@@ -104,7 +112,6 @@ const apiOrder = async (data: orderDataInterface): Promise<void> => {
         text: "Не удалось совершить заказ",
       });
     }
-
   } catch (error) {
     Swal.fire({
       icon: "error",
@@ -115,22 +122,21 @@ const apiOrder = async (data: orderDataInterface): Promise<void> => {
   }
 };
 
-
 export const getFormData = async ({ request }: LoaderFunctionArgs) => {
   const cart = localStorage.getItem("cart");
   const totalPrice = localStorage.getItem("totalPrice");
-  const parsedCart = cart ? JSON.parse(cart) : null; 
+  const parsedCart = cart ? JSON.parse(cart) : null;
 
   if (!parsedCart) {
-    return null; 
+    return null;
   }
 
   const formData = await request.formData();
 
   const data = {
     owner: {
-      phone: formData.get("phone") as string, 
-      address: formData.get("address") as string, 
+      phone: formData.get("phone") as string,
+      address: formData.get("address") as string,
     },
     items: parsedCart,
     totalPrice: Number(totalPrice),

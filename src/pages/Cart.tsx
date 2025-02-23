@@ -20,9 +20,6 @@ export default function Cart() {
   const cart = useSelector((state: {cartSlice: initialCartSliceInterface}) => state.cartSlice.cart);
   const nav = useNavigation();
 
- //let totalCount = useSelector((state: {cartSlice: initialCartSliceInterface}) => state.cartSlice.totalPrice);
-  //const formattedTotalCount = String(totalCount).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
-
   function ActualCart({ cart, dispatch }: { cart: cartItem[]; dispatch: any }) {
     const data = cart.map((el: cartItem, ind: number) => ({
       key: el.id,

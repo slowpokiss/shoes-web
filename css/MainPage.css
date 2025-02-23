@@ -34,6 +34,16 @@ a:hover {
   cursor: pointer;
 }
 
+.order-alert {
+  position: fixed;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  display: none;
+  transform: translate(-50%);
+}
+
+
 .text-center {
   text-align: center;
 }
@@ -246,6 +256,10 @@ li.catalog-param-active {
 }
 
 /* Main */
+main {
+  max-width: 1280px;
+}
+
 .banner {
   position: relative;
   width: 100%; 
@@ -281,6 +295,8 @@ li.catalog-param-active {
 .ant-carousel .slick-prev:hover {
   color: #333333 !important;
   height: 100%;
+  width: 10%;
+  left: -50px !important;
 }
 
 .slick-prev::after, .slick-next::after {
@@ -291,6 +307,8 @@ li.catalog-param-active {
 .ant-carousel .slick-next:hover {
   height: 100%;
   color: #333333 !important;
+  right: -50px !important; 
+  width: 20%;
 }
 
 .category-icons {
@@ -303,6 +321,8 @@ li.catalog-param-active {
   color: #ff748b;
   font-size: 1.5em;
 }
+
+
 
 
 /* Top sales! */
@@ -513,6 +533,10 @@ footer {
   .navbar {
     flex-direction: column-reverse;
     align-items: center;
+  }
+
+  .slick-prev::after, .slick-next::after {
+    display: none  !important;
   }
 
   .catalog-params-list-mobile {
